@@ -1,11 +1,18 @@
 .home-screen{
+    width: 100vw;
+    height: 100vh;
+    padding: 2rem;
+    text-align: center;
+    background: var(--primary-color);
     color: white;
     display: flex;
     flex-direction: column;
     h1{
         font-size: 3rem;
+        margin-top: 1rem;
     }
     h2{
+        margin-bottom: 1rem;
         font-weight: 400;
         line-height: 150%;
     }
@@ -48,5 +55,12 @@
                 background: #8870e4;
             }
         }
+    }
+    @media screen and (min-width:798px){
+        section{
+            width: 30vw;
+            margin: auto;
+        }
+        
     }
 }
