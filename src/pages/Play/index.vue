@@ -5,7 +5,7 @@
       <h1>Fase 1</h1>
       <span>
         <h1>
-          <strong>1000</strong>
+          <strong v-html="score"></strong>
           <br />Pontos
         </h1>
       </span>
@@ -29,7 +29,7 @@ export default {
   data: () => ({
     cards: [],
     card1: "",
-    card2: "",
+    score: 0,
   }),
   mounted() {
     if (localStorage.getItem("LIBRAS_MATH_CARDS_DATA")) {
@@ -57,7 +57,16 @@ export default {
         this.cards.push(obj2);
       }
 
-      localStorage.setItem("LIBRAS_MATH_CARDS_DATA", JSON.stringify(this.cards));
+      localStorage.setItem(
+        "LIBRAS_MATH_CARDS_DATA",
+        JSON.stringify(this.cards)
+      );
+    }
+
+    if (localStorage.getItem("LIBRAS_MATH_SCORE_DATA")) {
+      this.score = Number(localStorage.getItem("LIBRAS_MATH_SCORE_DATA"));
+    } else {
+      localStorage.setItem("LIBRAS_MATH_SCORE_DATA", this.score);
     }
   },
   methods: {
@@ -77,12 +86,27 @@ export default {
         this.cards[this.cards.indexOf(card)].complete = true;
         this.cards[this.cards.indexOf(this.card1)].complete = true;
         this.card1 = "";
+        this.addScore();
       } else {
         this.cards[this.cards.indexOf(this.card1)].isDiscovered = false;
         this.card1 = "";
       }
-      
-      localStorage.setItem("LIBRAS_MATH_CARDS_DATA", JSON.stringify(this.cards));
+      localStorage.setItem(
+        "LIBRAS_MATH_CARDS_DATA",
+        JSON.stringify(this.cards)
+      );
+    },
+    addScore: function () {
+      //   let scoreCompare = this.cards.map((entry) => entry.complete);
+
+      //   let counter = 0;
+      //   scoreCompare.forEach((a) => {
+      //     if (a) {
+      //       counter++;
+      //     }
+      //   });
+      this.score = Number(this.score) + 10;
+      localStorage.setItem("LIBRAS_MATH_SCORE_DATA", Number(this.score));
     },
   },
 };
