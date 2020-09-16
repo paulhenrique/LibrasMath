@@ -1,0 +1,46 @@
+.home-screen{
+    color: white;
+    h1{
+        font-size: 3rem;
+    }
+    h2{
+        font-weight: 400;
+        line-height: 150%;
+    }
+
+    .contain-buttons{
+        display: flex;
+        justify-content: space-around;
+        margin-top:1rem;
+        .button-home-screen{
+            color: white;
+            background: var(--purple);
+            padding: 1rem;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            margin: .3rem;
+            text-align: center;
+            img{
+                width: 1.5rem;
+                margin-bottom: .5rem;
+            }
+            &:first-child{
+                background: var(--primary-light-color);
+                &:hover{
+                    background: var(--primary-light-color);
+                }
+            }
+            transition: background .25s ease;
+            &:hover{
+                background: var(--purple);
+            }
+        }
+    }
+}

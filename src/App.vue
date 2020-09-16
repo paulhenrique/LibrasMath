@@ -1,17 +1,23 @@
 <template>
   <div id="nav">
-    <router-link to="/">Início</router-link>|
-    <router-link to="/sobre">Sobre</router-link>|
-    <router-link to="/pontuacao">Minha pontuação</router-link>|
-    <router-link to="/pontuacao">Jogar</router-link>
-  </div>
-  <div class="container">
-    <div class="notification">
-      <router-view />
+    <Navbar></Navbar>
+    <div class="container">
+      <div>
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
+<script>
+import Navbar from "@/components/Navbar";
 
+export default {
+  name: "App",
+  components: {
+    Navbar,
+  },
+};
+</script>
 <style lang="scss">
 @import "assets/sass/global.scss";
 </style>
