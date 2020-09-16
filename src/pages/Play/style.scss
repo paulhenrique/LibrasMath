@@ -33,17 +33,19 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: .5rem;
         padding: 1rem;
+        max-height: 85vh;
         .item{
             margin: auto;
             background: white;
             width: 100%;
             text-align: center;
-            min-height: 20vh;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 15px;
             color: var(--primary-color);
+            height: 19vh;
+            box-shadow: 0px 0px 12px -5px #00000052;
         }
     }
 }

@@ -13,10 +13,12 @@
     <div class="grid">
       <div
         class="item"
+        @click="verifyResult(card)"
         v-for="card in cards.sort(function() { return 1 - Math.random()})"
         :key="card"
+        :style="card.isDiscovered? 'background:green' : ''"
       >
-        <h1 v-html="card"></h1>
+        <h1 v-html="card.content"></h1>
       </div>
     </div>
   </div>
@@ -26,6 +28,8 @@ export default {
   name: "Play",
   data: () => ({
     cards: [],
+    card1:'',
+    card2:''
   }),
   mounted() {
     for (var i = 0; i < 6; i++) {
@@ -34,9 +38,20 @@ export default {
 
       var result = char1 + char2;
 
-      this.cards.push("" + char1 + "+" + char2 + "");
-      this.cards.push("" + result + "");
-      console.log(this.cards);
+      let obj1 = {
+        content: "" + char1 + "+" + char2 + "",
+        result: result,
+        isDiscovered:false
+      };
+
+      let obj2 = {
+        content: "" + result + "",
+        result: result,
+        isDiscovered:false
+      };
+
+      this.cards.push(obj1);
+      this.cards.push(obj2);
     }
   },
   methods: {
@@ -45,6 +60,22 @@ export default {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
+    verifyResult: function(card){
+        if(card.complete){
+            return;
+        }else if(this.card1 === ''){
+            this.card1 = card;
+            this.cards[this.cards.indexOf(card)].isDiscovered = true;
+        }else if(this.card1.result === card.result){
+            this.cards[this.cards.indexOf(card)].isDiscovered = true;
+            this.cards[this.cards.indexOf(card)].complete = true;
+            this.cards[this.cards.indexOf(this.card1)].complete = true;
+            this.card1 = ''
+        }else{
+            this.cards[this.cards.indexOf(this.card1)].isDiscovered = false;
+            this.card1 = ''
+        }
+    }
   },
 };
 </script>
