@@ -8,10 +8,10 @@
     </h2>
     <section class="contain-buttons">
       <router-link to="/sobre" class="button-home-screen">
-        <img src="/img/icons/help-home-screen-icon.png" />Como Jogar?
+        <img src="/img/icons/help-home-screen-icon.svg" />Como Jogar?
       </router-link>
       <router-link to="/jogar" class="button-home-screen">
-        <img src="/img/icons/play-game-home-screen-icon.png" />Jogar
+        <img src="/img/icons/play-game-home-screen-icon.svg" />Jogar
       </router-link>
     </section>
   </div>

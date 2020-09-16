@@ -2,7 +2,7 @@
   <div id="play">
     <header>
       <router-link class="back-another" to="/">Anterior</router-link>
-      <h1>Fase {{fase}}</h1>
+      <h1>Fase {{faseIndex + 1}}</h1>
       <span>
         <h1>
           <strong v-html="score"></strong>
@@ -22,9 +22,9 @@
       </div>
     </div>
     <footer>
-      <button @click="cleanCurrentFase" class="clean">Fase anterior</button>
+      <button @click="cleanCurrentFase" class="left">Fase anterior</button>
       <button @click="cleanCurrentFase" class="clean">Reiniciar fase</button>
-      <button @click="cleanCurrentFase" class="clean">Próxima fase</button>
+      <button :disabled="faseCompleta" @click="cleanCurrentFase" class="next disabled">Próxima fase</button>
     </footer>
   </div>
 </template>
@@ -35,7 +35,9 @@ export default {
     cards: [],
     card1: "",
     score: 0,
-    fase: 1
+    fases: [],
+    faseCompleta: false,
+    faseIndex: 0,
   }),
   mounted() {
     if (localStorage.getItem("LIBRAS_MATH_CARDS_DATA")) {
@@ -67,12 +69,29 @@ export default {
         "LIBRAS_MATH_CARDS_DATA",
         JSON.stringify(this.cards)
       );
+
+      console.log(this.cards);
     }
 
     if (localStorage.getItem("LIBRAS_MATH_SCORE_DATA")) {
       this.score = Number(localStorage.getItem("LIBRAS_MATH_SCORE_DATA"));
     } else {
       localStorage.setItem("LIBRAS_MATH_SCORE_DATA", this.score);
+    }
+
+    if (localStorage.getItem("LIBRAS_MATH_FASES_DATA")) {
+      this.fases = JSON.parse(localStorage.getItem("LIBRAS_MATH_FASES_DATA"));
+      this.faseIndex = this.fases.indexOf(this.cards);
+      console.log(this.fases);
+      console.log(this.cards);
+      console.log(this.faseIndex);
+    } else {
+      this.fases.push(this.cards);
+      this.faseIndex = this.fases.indexOf(this.cards);
+      localStorage.setItem(
+        "LIBRAS_MATH_FASES_DATA",
+        JSON.stringify(this.fases)
+      );
     }
   },
   methods: {
@@ -92,23 +111,33 @@ export default {
         this.cards[this.cards.indexOf(card)].complete = true;
         this.cards[this.cards.indexOf(this.card1)].complete = true;
         this.card1 = "";
+        this.updateFases();
         this.addScore();
       } else {
-        this.cards[this.cards.indexOf(this.card1)].isDiscovered = false;
-        this.card1 = "";
+        this.cards[this.cards.indexOf(card)].isDiscovered = true;
+        setTimeout(() => {
+          this.cards[this.cards.indexOf(this.card1)].isDiscovered = false;
+          this.cards[this.cards.indexOf(card)].isDiscovered = false;
+          this.card1 = "";
+        }, 1000);
       }
+      this.updateCards();
+    },
+    updateCards: function () {
       localStorage.setItem(
         "LIBRAS_MATH_CARDS_DATA",
         JSON.stringify(this.cards)
       );
     },
-    updateCards:function(){
+    updateFases: function () {
+      console.log(this.faseIndex);
+      this.fases[this.faseIndex] = this.cards;
       localStorage.setItem(
-        "LIBRAS_MATH_CARDS_DATA",
-        JSON.stringify(this.cards)
+        "LIBRAS_MATH_FASES_DATA",
+        JSON.stringify(this.fases)
       );
     },
-    updateScore:function(){
+    updateScore: function () {
       localStorage.setItem("LIBRAS_MATH_SCORE_DATA", Number(this.score));
     },
     addScore: function () {
@@ -123,19 +152,20 @@ export default {
       this.score = Number(this.score) + 10;
       this.updateScore();
     },
-    cleanCurrentFase: function (){
-      let cleanCards = this.cards.map(entry => {
-        if(entry.complete){
+    cleanCurrentFase: function () {
+      let cleanCards = this.cards.map((entry) => {
+        if (entry.complete) {
           this.score = Number(this.score) - 5;
           this.updateScore();
         }
         entry.isDiscovered = false;
         entry.complete = false;
-        return entry
+        return entry;
       });
       this.cards = cleanCards;
       this.updateCards();
-    }
+      this.updateFases();
+    },
   },
 };
 </script>
