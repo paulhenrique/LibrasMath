@@ -43,15 +43,17 @@
 
         div.row {
             margin: 2rem 0;
-            color: gray;
+            
 
             h1 {
                 font-size: 1.3rem;
-                font-weight: 600;
+                font-weight: 500;
+                color: black;
                 margin-bottom: .5rem;
             }
 
             p {
+                color: gray;
                 line-height: 150%;
                 text-align: justify;
                 font-size: .95rem;
@@ -59,7 +61,7 @@
         }
     }
 
-    background: white;
+    background: #FFF6EE;
 
     @media screen and (min-width:798px){
         section{
