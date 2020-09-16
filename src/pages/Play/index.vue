@@ -2,7 +2,7 @@
   <div id="play">
     <header>
       <router-link class="back-another" to="/">Anterior</router-link>
-      <h1>Fase 1</h1>
+      <h1>Fase {{fase}}</h1>
       <span>
         <h1>
           <strong v-html="score"></strong>
@@ -21,6 +21,11 @@
         <h1 v-html="card.content"></h1>
       </div>
     </div>
+    <footer>
+      <button @click="cleanCurrentFase" class="clean">Fase anterior</button>
+      <button @click="cleanCurrentFase" class="clean">Reiniciar fase</button>
+      <button @click="cleanCurrentFase" class="clean">Próxima fase</button>
+    </footer>
   </div>
 </template>
 <script>
@@ -30,6 +35,7 @@ export default {
     cards: [],
     card1: "",
     score: 0,
+    fase: 1
   }),
   mounted() {
     if (localStorage.getItem("LIBRAS_MATH_CARDS_DATA")) {
@@ -96,6 +102,15 @@ export default {
         JSON.stringify(this.cards)
       );
     },
+    updateCards:function(){
+      localStorage.setItem(
+        "LIBRAS_MATH_CARDS_DATA",
+        JSON.stringify(this.cards)
+      );
+    },
+    updateScore:function(){
+      localStorage.setItem("LIBRAS_MATH_SCORE_DATA", Number(this.score));
+    },
     addScore: function () {
       //   let scoreCompare = this.cards.map((entry) => entry.complete);
 
@@ -106,8 +121,21 @@ export default {
       //     }
       //   });
       this.score = Number(this.score) + 10;
-      localStorage.setItem("LIBRAS_MATH_SCORE_DATA", Number(this.score));
+      this.updateScore();
     },
+    cleanCurrentFase: function (){
+      let cleanCards = this.cards.map(entry => {
+        if(entry.complete){
+          this.score = Number(this.score) - 5;
+          this.updateScore();
+        }
+        entry.isDiscovered = false;
+        entry.complete = false;
+        return entry
+      });
+      this.cards = cleanCards;
+      this.updateCards();
+    }
   },
 };
 </script>

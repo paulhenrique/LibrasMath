@@ -8,6 +8,7 @@
         justify-content: space-around;
         align-items: center;
         padding: 1rem;
+        height: 10vh;
         h1{
             font-size: 1.7rem;
             font-weight: 600;
@@ -33,7 +34,8 @@
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: .5rem;
         padding: 1rem;
-        max-height: 85vh;
+        max-height: 80vh;
+        overflow-y: scroll;
         .item{
             margin: auto;
             background: white;
@@ -54,6 +56,23 @@
             &.complete{
                 color: var(--purple);
             }
+        }
+    }
+
+    footer{
+        height: 10vh;
+        background: var(--primary-color);
+        width: 100vw;
+        display: flex;
+        padding: 1rem;
+        justify-content: space-between;
+        button{
+            padding: 1rem;
+            background: var(--purple);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-weight: 600;
         }
     }
 }
