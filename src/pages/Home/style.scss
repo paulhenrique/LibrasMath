@@ -1,6 +1,6 @@
 .home-screen{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 2rem;
     text-align: center;
     background: var(--primary-color);
@@ -17,7 +17,7 @@
         line-height: 150%;
     }
     img.home-screen-illustration{
-        max-width: 80%;
+        max-width: 70%;
         margin:auto;
     }
 
