@@ -43,9 +43,16 @@
             align-items: center;
             justify-content: center;
             border-radius: 15px;
-            color: var(--primary-color);
+            // color: var(--primary-color);
+            color: white;
             height: 19vh;
             box-shadow: 0px 0px 12px -5px #00000052;
+            &.active{
+                color: var(--primary-color);
+            }
+            &.complete{
+                color: var(--purple);
+            }
         }
     }
 }
