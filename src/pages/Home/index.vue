@@ -1,6 +1,6 @@
 <template>
   <div class="home-screen">
-    <img src="/img/illustrations/HomeScreen.svg" alt="Ilustração ilustrativa de uso do app" />
+    <img class="home-screen-illustration" src="/img/illustrations/HomeScreen.svg" alt="Ilustração ilustrativa de uso do app" />
     <h1>LibrasMath</h1>
     <h2>
       Praticar e aprender Libras e

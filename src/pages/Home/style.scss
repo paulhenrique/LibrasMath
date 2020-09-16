@@ -1,11 +1,17 @@
 .home-screen{
     color: white;
+    display: flex;
+    flex-direction: column;
     h1{
         font-size: 3rem;
     }
     h2{
         font-weight: 400;
         line-height: 150%;
+    }
+    img.home-screen-illustration{
+        max-width: 80%;
+        margin:auto;
     }
 
     .contain-buttons{
@@ -34,12 +40,12 @@
             &:first-child{
                 background: var(--primary-light-color);
                 &:hover{
-                    background: var(--primary-light-color);
+                    background: #ff922d;
                 }
             }
             transition: background .25s ease;
             &:hover{
-                background: var(--purple);
+                background: #8870e4;
             }
         }
     }
