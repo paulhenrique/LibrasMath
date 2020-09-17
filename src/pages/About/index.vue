@@ -15,16 +15,18 @@
         <p>Esta é uma adaptação do tradicional jogo da memória, quando clicar em <i>"jogar"</i> os cartões ficaram disponíveis, cada cartão possui um valor ou uma operação e seu objetivo é encontrar os pares. </p>
       </div>
       <div class="row">
-        <h1>Fases</h1>
-        <p>Durante o jogo é possível ver três botões, sendo eles: Fase anterior, Reiniciar fase e Próxima fase.</p>
-        <p><b>Fase anterior</b> dctfghbjkmfvghbjnkml</p>
-        <p><b>Reiniciar fase</b> Ao clicar nesse botão sua atual fase será reiniciada, isto é, os pontos voltarão à zero, todos os cartões ficarão ocultos e seus valores serão alterados. </p>
-        <h4>Próxima fase</h4>
-        <p>Só é possível ir para fase seguinte após concluir a fase atual, por esse motivo o botão ficará desabilitado até que você conclua sua atual fase.</p>
+        <h1>Como funciona a pontuação?</h1>
+        <p>A partida se iniciará com zero pontos, para cada par formado serão somados dez pontos ao placar. Não se preocupe, não perderá pontos com os erros.</p>
       </div>
       <div class="row">
-        <h1>Como funciona a pontuação?</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veritatis voluptatum eos, nam unde quod aspernatur hic repellendus harum similique porro delectus pariatur in quibusdam vel optio ipsum quas quasi!</p>
+        <h1>Botões:</h1>
+        <p>Durante o jogo é possível ver três botões, sendo eles: Fase anterior, Reiniciar fase e Próxima fase.</p>
+        <p>Fase anterior:</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veritatis voluptatum eos, nam unde quod aspernatur hic repellendus harum similique porro</p>
+        <p>Reiniciar fase</p>
+        <p>Ao clicar nesse botão sua atual fase será reiniciada, isto é, os pontos voltarão à zero, todos os cartões ficarão ocultos e seus valores serão alterados. </p>
+        <h5>Próxima fase</h5>
+        <p>Só é possível ir para fase seguinte após concluir a fase atual, por esse motivo o botão ficará desabilitado até que você conclua sua atual fase.</p>
       </div>
     </section>
   </div>
