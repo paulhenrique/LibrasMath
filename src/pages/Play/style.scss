@@ -62,13 +62,23 @@
             background-size: 70%;
             background-repeat: no-repeat;
 
-            h1 {
+            .contain{
+                justify-content: center;
+                font-weight: 900;
                 display: none;
+                width: 100%;
+                overflow: hidden;
+                // justify-content: center;
+                // align-items: center;
+                // flex-direction: column;
+                img{
+                    max-width: 30%;
+                }
             }
-
+            
             &.active {
-                h1 {
-                    display: block;
+                .contain{
+                    display: flex;
                 }
 
                 background-image: none;

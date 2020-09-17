@@ -14,11 +14,12 @@
       <div
         class="item"
         @click="verifyResult(card)"
-        v-for="card in cards.sort(function() { return 1 - Math.random()})"
+        v-for="card in cards"
         :key="card"
         :class="card.isDiscovered? 'active' : ''"
       >
-        <h1 v-html="card.content"></h1>
+        <div class="contain" v-html="card.content"></div>
+        <!-- <img :src="'/img/numeros_libras/' + card.result + '.PNG'"> -->
       </div>
     </div>
     <footer>
@@ -49,14 +50,30 @@ export default {
 
         var result = char1 + char2;
 
+        var imgchar1 = "<img src='/img/numeros_libras/" + char1 + ".PNG'>";
+        if(String(char1).length > 1){
+          imgchar1 = "<img src='/img/numeros_libras/" + String(char1)[0] + ".PNG'> <img src='/img/numeros_libras/" + String(char1)[1] + ".PNG'>";
+        }
+
+        var imgchar2 = "<img src='/img/numeros_libras/" + char2 + ".PNG'>";
+        if(String(char2).length > 1){
+          imgchar2 = "<img src='/img/numeros_libras/" + String(char2)[0] + ".PNG'> <img src='/img/numeros_libras/" + String(char2)[1] + ".PNG'>";
+        }
+        
         let obj1 = {
-          content: "" + char1 + "+" + char2 + "",
+          content: imgchar1 + "+" + imgchar2 + "",
+          char1,
+          char2,
           result: result,
           isDiscovered: false,
         };
 
+        var imgResult = "<img src='/img/numeros_libras/" + result + ".PNG'>";
+        if(String(result).length > 1){
+          imgResult = "<img src='/img/numeros_libras/" + String(result)[0] + ".PNG'> <img src='/img/numeros_libras/" + String(result)[1] + ".PNG'>";
+        }
         let obj2 = {
-          content: "" + result + "",
+          content: imgResult,
           result: result,
           isDiscovered: false,
         };
@@ -65,12 +82,12 @@ export default {
         this.cards.push(obj2);
       }
 
+      this.cards = this.cards.map((a) => ({sort: Math.random(), value: a})).sort((a, b) => a.sort - b.sort).map((a) => a.value);
       localStorage.setItem(
         "LIBRAS_MATH_CARDS_DATA",
         JSON.stringify(this.cards)
       );
 
-      console.log(this.cards);
     }
 
     if (localStorage.getItem("LIBRAS_MATH_SCORE_DATA")) {
