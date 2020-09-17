@@ -99,12 +99,18 @@ export default {
     if (localStorage.getItem("LIBRAS_MATH_FASES_DATA")) {
       this.fases = JSON.parse(localStorage.getItem("LIBRAS_MATH_FASES_DATA"));
       this.faseIndex = this.fases.indexOf(this.cards);
-      console.log(this.fases);
-      console.log(this.cards);
-      console.log(this.faseIndex);
+      this.fases.forEach( (content,index) => {
+        if(JSON.stringify(content) == JSON.stringify(this.cards)){
+          this.faseIndex = index;
+        }
+      })
     } else {
       this.fases.push(this.cards);
-      this.faseIndex = this.fases.indexOf(this.cards);
+      this.fases.forEach( (content,index) => {
+        if(JSON.stringify(content) == JSON.stringify(this.cards)){
+          this.faseIndex = index;
+        }
+      })
       localStorage.setItem(
         "LIBRAS_MATH_FASES_DATA",
         JSON.stringify(this.fases)
