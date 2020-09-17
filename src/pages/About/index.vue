@@ -21,7 +21,7 @@
       <div class="row">
         <h1>E os botões?</h1>
         <p>Durante o jogo é possível ver três botões, sendo eles: Fase anterior, Reiniciar fase e Próxima fase.</p>
-        <p><b>Fase anterior:<b></p>
+        <p><b>Fase anterior:</b></p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius veritatis voluptatum eos, nam unde quod aspernatur hic repellendus harum similique porro</p>
         <p><i>Reiniciar fase</i></p>
         <p>Ao clicar nesse botão sua atual fase será reiniciada, isto é, os pontos voltarão à zero, todos os cartões ficarão ocultos e seus valores serão alterados. </p>
