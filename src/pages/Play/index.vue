@@ -22,13 +22,15 @@
       </div>
     </div>
     <footer>
-      <button @click="cleanCurrentFase" class="left">Fase anterior</button>
-      <button @click="cleanCurrentFase" class="clean">Reiniciar fase</button>
-      <button
-        @click="nextFase"
-        class="next"
-        :class="!faseCompleta? 'disabled': ''"
-      >Próxima fase</button>
+      <button @click="cleanCurrentFase" class="left">
+        <img src="/img/icons/back-icon.svg" /> Fase<br> anterior
+      </button>
+      <button @click="cleanCurrentFase" class="clean">
+        <img src="/img/icons/reload-icon.svg" />Reiniciar fase
+      </button>
+      <button @click="nextFase" class="next" :class="!faseCompleta? 'disabled': ''">
+        <img src="/img/icons/next-icon.svg" />Próxima<br> fase
+      </button>
     </footer>
   </div>
 </template>
@@ -69,9 +71,9 @@ export default {
       this.generateCards();
       this.fases.push(this.cards);
       localStorage.setItem(
-          "LIBRAS_MATH_FASES_DATA",
-          JSON.stringify(this.fases)
-        );
+        "LIBRAS_MATH_FASES_DATA",
+        JSON.stringify(this.fases)
+      );
       this.verifyFaseIndex();
     },
     getCards: function () {
@@ -81,68 +83,68 @@ export default {
         this.generateCards();
       }
     },
-    generateCards:function(){
-            for (var i = 0; i < 6; i++) {
-          var char1 = this.getRandomIntInclusive(0, 10);
-          var char2 = this.getRandomIntInclusive(0, 10);
+    generateCards: function () {
+      for (var i = 0; i < 6; i++) {
+        var char1 = this.getRandomIntInclusive(0, 10);
+        var char2 = this.getRandomIntInclusive(0, 10);
 
-          var result = char1 + char2;
+        var result = char1 + char2;
 
-          var imgchar1 = "<img src='/img/numeros_libras/" + char1 + ".PNG'>";
-          if (String(char1).length > 1) {
-            imgchar1 =
-              "<img src='/img/numeros_libras/" +
-              String(char1)[0] +
-              ".PNG'> <img src='/img/numeros_libras/" +
-              String(char1)[1] +
-              ".PNG'>";
-          }
-
-          var imgchar2 = "<img src='/img/numeros_libras/" + char2 + ".PNG'>";
-          if (String(char2).length > 1) {
-            imgchar2 =
-              "<img src='/img/numeros_libras/" +
-              String(char2)[0] +
-              ".PNG'> <img src='/img/numeros_libras/" +
-              String(char2)[1] +
-              ".PNG'>";
-          }
-
-          let obj1 = {
-            content: imgchar1 + "+" + imgchar2 + "",
-            char1,
-            char2,
-            result: result,
-            isDiscovered: false,
-          };
-
-          var imgResult = "<img src='/img/numeros_libras/" + result + ".PNG'>";
-          if (String(result).length > 1) {
-            imgResult =
-              "<img src='/img/numeros_libras/" +
-              String(result)[0] +
-              ".PNG'> <img src='/img/numeros_libras/" +
-              String(result)[1] +
-              ".PNG'>";
-          }
-          let obj2 = {
-            content: imgResult,
-            result: result,
-            isDiscovered: false,
-          };
-
-          this.cards.push(obj1);
-          this.cards.push(obj2);
+        var imgchar1 = "<img src='/img/numeros_libras/" + char1 + ".PNG'>";
+        if (String(char1).length > 1) {
+          imgchar1 =
+            "<img src='/img/numeros_libras/" +
+            String(char1)[0] +
+            ".PNG'> <img src='/img/numeros_libras/" +
+            String(char1)[1] +
+            ".PNG'>";
         }
 
-        this.cards = this.cards
-          .map((a) => ({ sort: Math.random(), value: a }))
-          .sort((a, b) => a.sort - b.sort)
-          .map((a) => a.value);
-        localStorage.setItem(
-          "LIBRAS_MATH_CARDS_DATA",
-          JSON.stringify(this.cards)
-        );
+        var imgchar2 = "<img src='/img/numeros_libras/" + char2 + ".PNG'>";
+        if (String(char2).length > 1) {
+          imgchar2 =
+            "<img src='/img/numeros_libras/" +
+            String(char2)[0] +
+            ".PNG'> <img src='/img/numeros_libras/" +
+            String(char2)[1] +
+            ".PNG'>";
+        }
+
+        let obj1 = {
+          content: imgchar1 + "+" + imgchar2 + "",
+          char1,
+          char2,
+          result: result,
+          isDiscovered: false,
+        };
+
+        var imgResult = "<img src='/img/numeros_libras/" + result + ".PNG'>";
+        if (String(result).length > 1) {
+          imgResult =
+            "<img src='/img/numeros_libras/" +
+            String(result)[0] +
+            ".PNG'> <img src='/img/numeros_libras/" +
+            String(result)[1] +
+            ".PNG'>";
+        }
+        let obj2 = {
+          content: imgResult,
+          result: result,
+          isDiscovered: false,
+        };
+
+        this.cards.push(obj1);
+        this.cards.push(obj2);
+      }
+
+      this.cards = this.cards
+        .map((a) => ({ sort: Math.random(), value: a }))
+        .sort((a, b) => a.sort - b.sort)
+        .map((a) => a.value);
+      localStorage.setItem(
+        "LIBRAS_MATH_CARDS_DATA",
+        JSON.stringify(this.cards)
+      );
     },
     getRandomIntInclusive: function (min, max) {
       min = Math.ceil(min);
@@ -156,12 +158,12 @@ export default {
         localStorage.setItem("LIBRAS_MATH_SCORE_DATA", this.score);
       }
     },
-    verifyFaseIndex:function(){
+    verifyFaseIndex: function () {
       this.fases.forEach((content, index) => {
-          if (JSON.stringify(content) == JSON.stringify(this.cards)) {
-            this.faseIndex = index;
-          }
-        });
+        if (JSON.stringify(content) == JSON.stringify(this.cards)) {
+          this.faseIndex = index;
+        }
+      });
     },
     getFase: function () {
       if (localStorage.getItem("LIBRAS_MATH_FASES_DATA")) {
