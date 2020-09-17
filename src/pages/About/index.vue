@@ -13,7 +13,7 @@
       <div class="row">
         <h1>Como Jogar?</h1>
         <p>Esta é uma adaptação do tradicional jogo da memória, quando clicar em <i>"jogar"</i> os cartões ficaram disponíveis, cada cartão possui um valor ou uma operação e seu objetivo é encontrar os pares. </p>
-        <h2>Teste 2</h2>
+        <h3>Teste 2</h3>
         <p>texto</p>
       </div>
       <div class="row">
