@@ -16,7 +16,7 @@
       </div>
       <div class="row">
         <h1>O que é o HandsOn?</h1>
-        <p>Olá!</p>
+        <p>Olá teste atualização!</p>
       </div>
       <div class="row">
         <h1>O que é o HandsOn?</h1>
