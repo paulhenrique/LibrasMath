@@ -68,9 +68,6 @@
                 display: none;
                 width: 100%;
                 overflow: hidden;
-                // justify-content: center;
-                // align-items: center;
-                // flex-direction: column;
                 img{
                     max-width: 30%;
                 }
@@ -125,7 +122,8 @@
         flex-direction: column;
         align-items: center;
         .grid, footer, header{
-            width: 30vw;
+            width: 50vw;
+            max-width: 500px;
         }
     }
 }
