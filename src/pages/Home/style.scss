@@ -41,10 +41,22 @@
             width: 50%;
             margin: .3rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            &:before{
+                content:"";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(256.3deg, #FFFFFF -53.21%, rgba(255, 255, 255, 0) 59.33%);
+            }
             img{
                 width: 1.5rem;
                 margin-bottom: .5rem;
             }
+           
             &:first-child{
                 background: var(--primary-light-color);
                 &:hover{

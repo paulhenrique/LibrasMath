@@ -46,17 +46,16 @@ export default {
   }),
   computed: {
     faseCompleta: function () {
-      // let scoreCompare = this.cards.map((entry) => entry.complete);
+      let scoreCompare = this.cards.map((entry) => entry.complete);
 
-      // let counter = 0;
-      // scoreCompare.forEach((a) => {
-      //   if (a) {
-      //     counter++;
-      //   }
-      // });
+      let counter = 0;
+      scoreCompare.forEach((a) => {
+        if (a) {
+          counter++;
+        }
+      });
 
-      // return counter == 12? true : false;
-      return true;
+      return counter == 12? true : false;
     },
   },
   mounted() {

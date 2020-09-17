@@ -136,10 +136,12 @@
                 width: 1.5rem;
                 margin-bottom: .5rem;
             }
+
             cursor: pointer;
 
             &.disabled {
                 opacity: .4;
+                // cursor:block;
             }
 
             &.left,
