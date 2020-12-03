@@ -5,7 +5,7 @@
 O LibrasMath é um Progressive Web App para a prática de numerais em LIBRAS e material didático de ensino de matemática para alunos dos anos iniciais do Ensino Fundamental.
 
 <p align="center">
-<img src="https://img.shields.io/badge/VueJS-%3E%20v3.0-green"> <img src="https://img.shields.io/badge/VueRouter-%3E%20v4.0-green"> <img src="https://img.shields.io/badge/sass-v10.0.2-pink">
+<img src="https://img.shields.io/badge/VueJS-%3E%20v3.0-green"> <img src="https://img.shields.io/badge/VueRouter-%3E%20v4.0-green"> <img src="https://img.shields.io/badge/sass-v10.0.2-pink">  <a href="https://zenodo.org/badge/latestdoi/295559620"><img target="_blank" src="https://zenodo.org/badge/295559620.svg" alt="DOI"></a>
 </p>
 
 ## Motivação
